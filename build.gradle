@@ -32,7 +32,7 @@ dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-hateoas'
   implementation 'org.springdoc:springdoc-openapi-ui:1.7.0'
   implementation 'org.springframework.boot:spring-boot-starter-actuator'
-  // implementation 'org.springframework.data:spring-data-rest-hal-explorer'
+  developmentOnly 'org.springframework.data:spring-data-rest-hal-explorer:3.7.10'
 }
 
 tasks.named('test') {
