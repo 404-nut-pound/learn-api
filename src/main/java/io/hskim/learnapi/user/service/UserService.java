@@ -1,6 +1,7 @@
 package io.hskim.learnapi.user.service;
 
 import io.hskim.learnapi.user.dto.UserDto;
+import io.hskim.learnapi.user.exception.UserNotFoundException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -56,6 +57,7 @@ public class UserService {
       .stream()
       .filter(userDto -> userDto.id() == id)
       .findFirst()
-      .orElseThrow(() -> new RuntimeException());
+      .orElseThrow(() -> new UserNotFoundException("사용자를 찾을 수 없습니다.")
+      );
   }
 }
