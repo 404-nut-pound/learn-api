@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.List;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -48,6 +49,17 @@ public class UserService {
         .id(3)
         .name("C")
         .regTimestamp(dtFormatter.format(LocalDateTime.now()))
+        .build()
+    );
+  }
+
+  public Object postUser(@Valid UserDto userDto) {
+    return userList.add(
+      UserDto
+        .builder()
+        .id(userDto.id())
+        .name(userDto.name())
+        .regTimestamp(userDto.regTimestamp())
         .build()
     );
   }

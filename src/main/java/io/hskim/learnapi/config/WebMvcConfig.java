@@ -54,7 +54,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
   ) {
     YamlMessageSource ms = new YamlMessageSource();
 
-    ms.setBasenames(basename + "/exception");
+    ms.setBasenames(basename + "/exception", basename + "/message");
     ms.setDefaultEncoding(encoding);
     ms.setAlwaysUseMessageFormat(true);
     ms.setUseCodeAsDefaultMessage(true);

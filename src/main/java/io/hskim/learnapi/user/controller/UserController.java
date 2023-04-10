@@ -1,10 +1,14 @@
 package io.hskim.learnapi.user.controller;
 
+import io.hskim.learnapi.user.dto.UserDto;
 import io.hskim.learnapi.user.service.UserService;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,13 +19,18 @@ public class UserController {
 
   private final UserService userService;
 
+  @PostMapping
+  public ResponseEntity<?> postUser(@Valid @RequestBody UserDto userDto) {
+    return ResponseEntity.ok().body(userService.postUser(userDto));
+  }
+
   @GetMapping
-  ResponseEntity<?> getUserList() {
+  public ResponseEntity<?> getUserList() {
     return ResponseEntity.ok().body(userService.getUserList());
   }
 
   @GetMapping(path = "/{id}")
-  ResponseEntity<?> getUser(@PathVariable int id) {
+  public ResponseEntity<?> getUser(@PathVariable int id) {
     return ResponseEntity.ok().body(userService.getUser(id));
   }
 }

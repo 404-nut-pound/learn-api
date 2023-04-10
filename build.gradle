@@ -28,6 +28,7 @@ dependencies {
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
   implementation 'dev.akkinoc.util:yaml-resource-bundle:2.8.2' //yaml 파싱 패키지
   implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.14.2'
+  implementation 'org.springframework.boot:spring-boot-starter-validation'
 }
 
 tasks.named('test') {
