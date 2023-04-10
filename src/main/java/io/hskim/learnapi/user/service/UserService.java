@@ -8,11 +8,15 @@ import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
+
+  private final MessageSource messageSource;
 
   private static List<UserDto> userList = new ArrayList<>();
 
@@ -57,7 +61,14 @@ public class UserService {
       .stream()
       .filter(userDto -> userDto.id() == id)
       .findFirst()
-      .orElseThrow(() -> new UserNotFoundException("사용자를 찾을 수 없습니다.")
+      .orElseThrow(() ->
+        new UserNotFoundException(
+          messageSource.getMessage(
+            "user-not-found.msg",
+            null,
+            LocaleContextHolder.getLocale()
+          )
+        )
       );
   }
 }
