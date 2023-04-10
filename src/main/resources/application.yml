@@ -1,3 +1,9 @@
+spring:
+  security:
+    user:
+      name: user
+      password: password
+
 springdoc:
   swagger-ui:
     path: /docs
